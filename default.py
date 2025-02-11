@@ -230,18 +230,20 @@ def fetch_messages(session, convo_id):
         response.raise_for_status()  # Raise an error for bad status codes
         messages = response.json().get('messages', [])
         
+        # Collect all DIDs to fetch profiles in bulk
+        dids = {message['sender']['did'] for message in messages if 'sender' in message and 'did' in message['sender']}
+        profiles = {did: fetch_profile(session, did) for did in dids}
+        
         # Ensure each message has the sender's handle
         for message in messages:
             if 'sender' in message and 'did' in message['sender']:
-                sender_did = message['sender']['did']
-                sender_profile = fetch_profile(session, sender_did)
+                sender_profile = profiles.get(message['sender']['did'], {})
                 message['sender']['handle'] = sender_profile.get('handle', 'Unknown')
         
         return messages
     except requests.exceptions.RequestException as e:
         xbmcgui.Dialog().ok(PLUGIN_NAME, 'Failed to fetch messages. Error: {}'.format(str(e)))
         return []
-
 # Display conversations in XBMC
 def display_conversations(session, conversations):
     for convo in conversations:
