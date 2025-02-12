@@ -27,4 +27,4 @@ A functional, decentralized and easy to use instant messenger, right on your Xbo
 - TBA
 
 ## TODO:
-- TBA
+- Implement game invites (merge with Cortana Server Browser games.txt, and use the AT protocol DM function to send a message that says "user.bsky.social would like to play Halo 2 with you", and if the script detects that sentence structure, will allow the end user to launch the game directly)
