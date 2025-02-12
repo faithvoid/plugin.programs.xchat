@@ -1,4 +1,4 @@
-# xChat - Bluesky / AT Protocol based instant messaging client for XBMC4Xbox
+# Cortana Chat - Bluesky / AT Protocol based instant messaging client for XBMC4Xbox
 
 A functional, decentralized and easy to use instant messenger, right on your Xbox.
 
@@ -20,7 +20,8 @@ A functional, decentralized and easy to use instant messenger, right on your Xbo
 - Run the add-on and enjoy!
 
 ## Working
-- TBA
+- Sending / receiving messages
+- Receiving notifications (via notifier.py)
 
 ## Not Working
 - TBA
